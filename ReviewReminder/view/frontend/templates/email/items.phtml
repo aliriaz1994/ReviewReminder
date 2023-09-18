@@ -1,0 +1,75 @@
+<?php
+/** @var $block \PHPStudios\ReviewReminder\Block\EmailData */
+/** @var $escaper \Magento\Framework\Escaper */
+?>
+<?php $escaper = $block->getEscaper(); ?>
+<?php $reminder = $block->getData('reminder'); ?>
+<?php $orderItems = $block->getProductsData($reminder); ?>
+<?php if ($orderItems): ?>
+    <table class="table-item" style="width: 100%;">
+        <thead>
+            <tr>
+                <th class="item-info"
+                    style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-align: left; vertical-align: bottom; padding: 10px;">
+                    Image
+                </th>
+                <th class="item-qty"
+                    style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; vertical-align: bottom; padding: 10px; text-align: left;">
+                    Items
+                </th>
+                <th class="item-price"
+                    style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; vertical-align: bottom; padding: 10px; text-align: left;">
+                    View
+                </th>
+            </tr>
+        </thead>
+        <?php foreach ($orderItems as $orderItem): ?>
+            <?php if (count($orderItem)): ?>
+                <tr style="border-bottom: 1px solid #cccccc;">
+                    <?php $image = $block->getProductImage($orderItem['product'], 'product_thumbnail_image') ?>
+                    <td style="background: white;vertical-align: middle;border-top: 1px solid #cccccc;padding: 10px 10px 10px 0px;">
+                        <a href="<?= $escaper->escapeHtml($orderItem['url']) ?>"
+                           title="<?= $escaper->escapeHtml($orderItem['name']) ?>">
+                            <img src="<?= $escaper->escapeHtml($image->getImageUrl()); ?>"
+                                 alt="<?= $escaper->escapeHtml($orderItem['name']) ?>"/>
+                        </a>
+                    </td>
+                    <td style="background: white;padding: 10px;vertical-align: middle;border-top: 1px solid #cccccc;">
+                        <p href="<?= $escaper->escapeUrl($orderItem['url']) ?>"
+                           title="<?= $escaper->escapeHtml($orderItem['name']) ?>">
+                           <b><?= $escaper->escapeHtml($orderItem['name']); ?></b>
+                        </p>
+                        <p href="<?= $escaper->escapeUrl($orderItem['url']) ?>">
+                            <?= $escaper->escapeHtml('SKU:' . $orderItem['sku']) ?>
+                        </p>
+                    </td>
+                    <td style="background: white;padding: 10px;vertical-align: middle;border-top: 1px solid #cccccc;">
+                        <a class="mail-button" href="<?= $escaper->escapeUrl($orderItem['url']) ?>#review-form"
+                           title="<?= $escaper->escapeHtml(__('Write review')) ?>">
+                            <?= $escaper->escapeHtml(__('Write Your Review')) ?>
+                        </a>
+                    </td>
+                </tr>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </table>
+<?php endif; ?>
+<style>
+    .mail-button {
+        border-radius: 6px;
+        color: #fff !important;
+        background: #1979c3 !important;
+        padding: 10px;
+        text-decoration: none !important;
+        border: 0px;
+    }
+    .mail-button:visited {
+        color: #fff !important;
+        text-decoration: none !important;
+    }
+    .mail-button:hover {
+        color: #fff !important;
+        background: #1979c3 !important;
+        text-decoration: none !important;
+    }
+</style>

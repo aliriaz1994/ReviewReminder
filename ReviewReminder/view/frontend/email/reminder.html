@@ -1,0 +1,16 @@
+<!--@subject {{trans "Review Reminder"}} @-->
+{{template config_path="design/email/header_template"}}
+<div class="table-mail">
+    <div class="email-intro">
+        <h1>{{trans "Product Review"}}</h1>
+    </div>
+    <div class="email-summary">
+        <p>{{trans "Hello"}} {{trans "%customer_name," customer_name=$data.customer_name}}</p>
+        <p>{{trans "You've recently bought products would you give us feedback?"}}</p>
+    </div>
+    <div class="mail-info">
+        {{block class='PHPStudios\\ReviewReminder\\Block\\EmailData' area='frontend'
+        template='PHPStudios_ReviewReminder::email/items.phtml' reminder=$data}}
+    </div>
+</div>
+{{template config_path="design/email/footer_template"}}

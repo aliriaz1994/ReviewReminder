@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="review_reminder" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Review Reminder</label>
+            <tab>phpstudios</tab>
+            <resource>PHPStudios_ReviewReminder::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1"  canRestore="1">
+                <label>General Configuration</label>
+                <field id="days_after" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Number of days</label>
+                    <comment>Number of days to wait before sending the email to customer via cron after the reminder is generated based on the order status</comment>
+                    <validate>required-entry no-whitespace validate-digits validate-not-negative-number </validate>
+                </field>
+                <field id="emails_per_cron" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Limit per cron run</label>
+                    <comment>Limit how many entities (review_reminder) will be processed during one cron run.</comment>
+                    <validate>required-entry no-whitespace validate-digits validate-not-negative-number</validate>
+                </field>
+                <field id="email_template" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Review Reminder Email Template</label>
+                    <comment>Email template chosen based on theme fallback when "Default" option is selected.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <validate>required-entry no-whitespace</validate>
+                </field>
+                <field id="sender_email" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Review Reminder Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                    <validate>required-entry no-whitespace</validate>
+                </field>
+                <field id="order_status" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Order Status</label>
+                    <comment>Default Order Status for Review Reminder email to be process</comment>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                    <validate>required-entry no-whitespace</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

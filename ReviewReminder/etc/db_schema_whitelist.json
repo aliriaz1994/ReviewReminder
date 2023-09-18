@@ -1,0 +1,18 @@
+{
+    "phpstudios_review_reminder": {
+        "column": {
+            "reminder_id": true,
+            "order_id": true,
+            "status": true,
+            "customer_email": true,
+            "customer_name": true,
+            "store_id": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "PHPSTUDIOS_REVIEW_REMINDER_ORDER_ID_SALES_ORDER_ENTITY_ID": true
+        }
+    }
+}

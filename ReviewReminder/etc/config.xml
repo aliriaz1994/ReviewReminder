@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <review_reminder>
+            <general>
+                <days_after>7</days_after>
+                <emails_per_cron>5</emails_per_cron>
+                <email_template>review_reminder_general_email_template</email_template>
+                <sender_email>sales</sender_email>
+                <order_status>complete</order_status>
+            </general>
+        </review_reminder>
+    </default>
+</config>

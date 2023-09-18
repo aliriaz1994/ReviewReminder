@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="PHPStudios_ReviewReminder::menu"
+             title="Review Reminders"
+             module="PHPStudios_ReviewReminder"
+             sortOrder="20"
+             parent="PHPStudios_Core::phpstudios"
+             resource="PHPStudios_ReviewReminder::menu"
+        />
+        <add id="PHPStudios_ReviewReminder::grid"
+             title="Review Reminder"
+             module="PHPStudios_ReviewReminder"
+             sortOrder="20"
+             action="review_reminder/index/index"
+             parent="PHPStudios_ReviewReminder::menu"
+             resource="PHPStudios_ReviewReminder::gird"
+        />
+        <add id="PHPStudios_ReviewReminder::configuration"
+             title="Configuration"
+             module="PHPStudios_ReviewReminder"
+             sortOrder="20"
+             action="adminhtml/system_config/edit/section/review_reminder"
+             parent="PHPStudios_ReviewReminder::menu"
+             resource="PHPStudios_ReviewReminder::menu"
+        />
+    </menu>
+</config>
